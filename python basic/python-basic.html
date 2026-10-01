@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Basic</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 10px; font-size: 2.4rem; }
+    header p { margin: 6px 0; font-size: 1.05rem; }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+    .toc, .card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    }
+    .toc ul { columns: 2; padding-left: 22px; }
+    .toc a { color: #1d4ed8; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+      color: #1e40af;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
+      margin-top: 0;
+    }
+    h3 { color: #374151; margin-top: 25px; }
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .tip {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: .95rem;
+    }
+    code {
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #dbe2ea;
+      padding: 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #dbeafe;
+      color: #1e3a8a;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 20px;
+      background: #dbeafe;
+      color: #1e40af;
+      font-size: .85rem;
+      margin: 3px;
+    }
+    .quiz {
+      background: #f5f3ff;
+      border-left: 4px solid #7c3aed;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #6b7280;
+    }
+    @media (max-width: 700px) {
+      .toc ul { columns: 1; }
+      header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🐍 Python for DevOps</h1>
+  <p>Beginner Notes — Concepts, Examples, Commands & Interview Preparation</p>
+  <p>Hinglish Friendly Learning Page</p>
+</header>
+
+<div class="container">
+
+  <div class="toc">
+    <h2>📚 Topics Covered</h2>
+    <ul>
+      <li><a href="#what-is-python">1. What is Python?</a></li>
+      <li><a href="#python-devops">2. Python in DevOps</a></li>
+      <li><a href="#speciality">3. Python Speciality</a></li>
+      <li><a href="#execute">4. How to Execute Python & Interpreter</a></li>
+      <li><a href="#variables">5. Variables & Data Types</a></li>
+      <li><a href="#type">6. type() Function</a></li>
+      <li><a href="#conversion">7. Type Conversion</a></li>
+      <li><a href="#input">8. input() Function</a></li>
+      <li><a href="#operators">9. Operators</a></li>
+      <li><a href="#arithmetic">10. Arithmetic Operators</a></li>
+      <li><a href="#comparison">11. Comparison Operators</a></li>
+      <li><a href="#fstring">12. f-Strings</a></li>
+      <li><a href="#practice">13. Practice Questions</a></li>
+      <li><a href="#interview">14. Interview Questions</a></li>
+    </ul>
+  </div>
+
+  <section class="card" id="what-is-python">
+    <h2>1. What is Python?</h2>
+
+    <p>
+      <strong>Python</strong> ek high-level, general-purpose, interpreted programming language hai.
+      Python ko readability aur simple syntax ke liye jaana jaata hai.
+    </p>
+
+    <div class="highlight">
+      <strong>Simple Definition:</strong><br>
+      Python ek programming language hai jiska use automation, web development,
+      data analysis, AI/ML, scripting, DevOps aur bahut saare areas me kiya jaata hai.
+    </div>
+
+    <h3>Python ko simple kyun maana jaata hai?</h3>
+    <ul>
+      <li>Syntax relatively simple aur readable hai.</li>
+      <li>Code kam lines me likha ja sakta hai.</li>
+      <li>Large standard library available hai.</li>
+      <li>Bahut saare third-party packages available hain.</li>
+      <li>Linux, Windows aur macOS par run kar sakta hai.</li>
+    </ul>
+
+    <h3>Simple Example</h3>
+    <pre><code>print("Hello, World!")</code></pre>
+
+    <p>Yahaan <code>print()</code> function screen par output display karta hai.</p>
+
+    <div class="tip">
+      <strong>DevOps Connection:</strong>
+      DevOps engineer ke liye Python ka main benefit automation aur scripting hai.
+    </div>
+  </section>
+
+  <section class="card" id="python-devops">
+    <h2>2. Python in DevOps</h2>
+
+    <p>
+      DevOps me repetitive manual tasks ko automate karna bahut important hota hai.
+      Python se hum scripts bana kar repetitive tasks ko automate kar sakte hain.
+    </p>
+
+    <h3>DevOps me Python kahaan use hota hai?</h3>
+    <table>
+      <tr>
+        <th>Area</th>
+        <th>Python ka Use</th>
+      </tr>
+      <tr>
+        <td>Automation</td>
+        <td>Repetitive tasks automate karna</td>
+      </tr>
+      <tr>
+        <td>Cloud</td>
+        <td>AWS, Azure, GCP resources ke saath automation</td>
+      </tr>
+      <tr>
+        <td>Linux</td>
+        <td>Files, processes aur system tasks automate karna</td>
+      </tr>
+      <tr>
+        <td>CI/CD</td>
+        <td>Build, test aur deployment related scripting</td>
+      </tr>
+      <tr>
+        <td>Monitoring</td>
+        <td>Logs, metrics aur health checks automate karna</td>
+      </tr>
+      <tr>
+        <td>Docker</td>
+        <td>Container-related automation aur API interaction</td>
+      </tr>
+      <tr>
+        <td>Kubernetes</td>
+        <td>Kubernetes API aur automation tools ke saath kaam</td>
+      </tr>
+      <tr>
+        <td>APIs</td>
+        <td>REST APIs ko call aur automate karna</td>
+      </tr>
+    </table>
+
+    <h3>Example: Disk Usage Check</h3>
+    <pre><code>import shutil
+
+total, used, free = shutil.disk_usage("/")
+
+print("Total:", total)
+print("Used:", used)
+print("Free:", free)</code></pre>
+
+    <p>
+      Is tarah Python se system information retrieve karke monitoring ya automation
+      scripts banayi ja sakti hain.
+    </p>
+
+    <h3>Example: Command Execute Karna</h3>
+    <pre><code>import subprocess
+
+result = subprocess.run(
+    ["ls", "-la"],
+    capture_output=True,
+    text=True
+)
+
+print(result.stdout)</code></pre>
+
+    <div class="warning">
+      <strong>Important:</strong>
+      DevOps me Python ka goal sirf Python Developer banna nahi hai.
+      Tumhara focus Python ko <strong>automation + cloud + Linux + CI/CD + APIs</strong>
+      ke liye use karna hona chahiye.
+    </div>
+  </section>
+
+  <section class="card" id="speciality">
+    <h2>3. Python Speciality</h2>
+
+    <p>Python ki kuch important characteristics:</p>
+
+    <div>
+      <span class="badge">Simple Syntax</span>
+      <span class="badge">Readable</span>
+      <span class="badge">Interpreted</span>
+      <span class="badge">Dynamically Typed</span>
+      <span class="badge">Cross Platform</span>
+      <span class="badge">Large Ecosystem</span>
+      <span class="badge">Automation Friendly</span>
+    </div>
+
+    <h3>1. Readable</h3>
+    <pre><code>name = "Pavan"
+print(name)</code></pre>
+
+    <h3>2. Dynamically Typed</h3>
+    <p>
+      Python me variable declare karte time data type separately likhna generally required nahi hota.
+    </p>
+    <pre><code>x = 10
+x = "Python"</code></pre>
+
+    <h3>3. Cross Platform</h3>
+    <p>
+      Python programs ko Linux, Windows aur macOS jaise multiple operating systems par run kiya ja sakta hai,
+      although OS-specific dependencies ke according changes ki zarurat ho sakti hai.
+    </p>
+
+    <h3>4. Huge Ecosystem</h3>
+    <p>
+      Python ke paas libraries aur packages ka huge ecosystem hai.
+      Examples: <code>requests</code>, <code>boto3</code>, <code>pandas</code>,
+      <code>pytest</code>, <code>FastAPI</code>, etc.
+    </p>
+
+    <h3>5. Automation Friendly</h3>
+    <pre><code>import os
+
+for file in os.listdir("."):
+    print(file)</code></pre>
+
+    <p>
+      Ye current directory ke files/folders list karne ka simple example hai.
+    </p>
+  </section>
+
+  <section class="card" id="execute">
+    <h2>4. How to Execute Python & Interpreter</h2>
+
+    <h3>Python Interpreter kya hai?</h3>
+    <p>
+      Python interpreter ek program/software component hai jo Python code ko execute karta hai.
+      Practical terms me, jab tum Python command chalate ho, Python runtime tumhare code ko process
+      karke execute karta hai.
+    </p>
+
+    <h3>Check Python Version</h3>
+    <pre><code>python3 --version</code></pre>
+
+    <h3>Python Interactive Mode</h3>
+    <pre><code>python3</code></pre>
+
+    <p>Ab tum directly commands run kar sakte ho:</p>
+
+    <pre><code>&gt;&gt;&gt; 10 + 20
+30
+
+&gt;&gt;&gt; print("Hello Python")
+Hello Python</code></pre>
+
+    <p>Interactive mode se bahar aane ke liye:</p>
+    <pre><code>exit()</code></pre>
+
+    <h3>Python File Create Karna</h3>
+    <p>Example file: <code>hello.py</code></p>
+
+    <pre><code>print("Hello from Python")</code></pre>
+
+    <h3>Python File Run Karna</h3>
+    <pre><code>python3 hello.py</code></pre>
+
+    <h3>Linux me Shebang</h3>
+    <pre><code>#!/usr/bin/env python3
+
+print("Hello DevOps")</code></pre>
+
+    <p>File executable banane ke liye:</p>
+    <pre><code>chmod +x hello.py</code></pre>
+
+    <p>Run:</p>
+    <pre><code>./hello.py</code></pre>
+
+    <div class="tip">
+      <strong>DevOps Tip:</strong>
+      Linux automation scripts me <code>#!/usr/bin/env python3</code> ka use common hai.
+    </div>
+  </section>
+
+  <section class="card" id="variables">
+    <h2>5. Variables & Data Types</h2>
+
+    <h3>Variable kya hai?</h3>
+    <p>
+      Variable ek name/reference hai jiske through hum kisi value ko program me use karte hain.
+    </p>
+
+    <pre><code>name = "Pavan"
+age = 22
+salary = 40000</code></pre>
+
+    <p>Yahaan:</p>
+    <ul>
+      <li><code>name</code> → variable</li>
+      <li><code>"Pavan"</code> → string value</li>
+      <li><code>age</code> → variable</li>
+      <li><code>22</code> → integer value</li>
+    </ul>
+
+    <h3>Important Built-in Data Types</h3>
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Example</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td>int</td>
+        <td><code>10</code></td>
+        <td>Whole number</td>
+      </tr>
+      <tr>
+        <td>float</td>
+        <td><code>10.5</code></td>
+        <td>Decimal number</td>
+      </tr>
+      <tr>
+        <td>str</td>
+        <td><code>"Python"</code></td>
+        <td>Text</td>
+      </tr>
+      <tr>
+        <td>bool</td>
+        <td><code>True</code></td>
+        <td>Boolean value</td>
+      </tr>
+      <tr>
+        <td>list</td>
+        <td><code>[1, 2, 3]</code></td>
+        <td>Ordered, mutable collection</td>
+      </tr>
+      <tr>
+        <td>tuple</td>
+        <td><code>(1, 2, 3)</code></td>
+        <td>Ordered, immutable collection</td>
+      </tr>
+      <tr>
+        <td>dict</td>
+        <td><code>{"name": "Pavan"}</code></td>
+        <td>Key-value collection</td>
+      </tr>
+      <tr>
+        <td>set</td>
+        <td><code>{1, 2, 3}</code></td>
+        <td>Unique elements collection</td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+    <pre><code>name = "Pavan"
+age = 22
+height = 5.8
+is_student = True
+
+print(name)
+print(age)
+print(height)
+print(is_student)</code></pre>
+  </section>
+
+  <section class="card" id="type">
+    <h2>6. type() Function</h2>
+
+    <p>
+      <code>type()</code> function kisi value ya variable ka data type batata hai.
+    </p>
+
+    <pre><code>x = 10
+name = "Pavan"
+price = 99.50
+status = True
+
+print(type(x))
+print(type(name))
+print(type(price))
+print(type(status))</code></pre>
+
+    <p>Output:</p>
+    <pre><code>&lt;class 'int'&gt;
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;</code></pre>
+
+    <div class="tip">
+      <strong>Debugging Tip:</strong>
+      Jab input ya API response ka data type samajh nahi aa raha ho,
+      <code>type()</code> bahut useful hota hai.
+    </div>
+  </section>
+
+  <section class="card" id="conversion">
+    <h2>7. Type Conversion</h2>
+
+    <p>
+      Type conversion ka matlab ek data type ki value ko doosre compatible data type me convert karna.
+    </p>
+
+    <h3>Common Conversion Functions</h3>
+    <table>
+      <tr>
+        <th>Function</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>int()</td>
+        <td><code>int("10")</code></td>
+      </tr>
+      <tr>
+        <td>float()</td>
+        <td><code>float("10.5")</code></td>
+      </tr>
+      <tr>
+        <td>str()</td>
+        <td><code>str(100)</code></td>
+      </tr>
+      <tr>
+        <td>bool()</td>
+        <td><code>bool(1)</code></td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+    <pre><code>age = "22"
+
+age = int(age)
+
+print(age)
+print(type(age))</code></pre>
+
+    <h3>Important: Invalid Conversion</h3>
+    <pre><code>number = int("hello")</code></pre>
+
+    <p>
+      Ye <code>ValueError</code> dega kyunki "hello" ko integer me convert nahi kiya ja sakta.
+    </p>
+  </section>
+
+  <section class="card" id="input">
+    <h2>8. input() Function</h2>
+
+    <p>
+      <code>input()</code> user se keyboard ke through data lene ke liye use hota hai.
+    </p>
+
+    <pre><code>name = input("Enter your name: ")
+
+print("Hello", name)</code></pre>
+
+    <h3>Important Point</h3>
+    <p>
+      <code>input()</code> normally user input ko <strong>string</strong> ke form me return karta hai.
+    </p>
+
+    <pre><code>age = input("Enter age: ")
+
+print(type(age))</code></pre>
+
+    <p>Age ko number ke form me use karna ho to:</p>
+
+    <pre><code>age = int(input("Enter age: "))
+
+print(age + 1)</code></pre>
+
+    <h3>DevOps Example</h3>
+    <pre><code>server = input("Enter server name: ")
+port = int(input("Enter port: "))
+
+print("Server:", server)
+print("Port:", port)</code></pre>
+  </section>
+
+  <section class="card" id="operators">
+    <h2>9. Operators</h2>
+
+    <p>
+      Operators special symbols/keywords hote hain jo values par operations perform karte hain.
+    </p>
+
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Operators</th>
+      </tr>
+      <tr>
+        <td>Arithmetic</td>
+        <td><code>+ - * / // % **</code></td>
+      </tr>
+      <tr>
+        <td>Comparison</td>
+        <td><code>== != &gt; &lt; &gt;= &lt;=</code></td>
+      </tr>
+      <tr>
+        <td>Assignment</td>
+        <td><code>= += -= *= /=</code></td>
+      </tr>
+      <tr>
+        <td>Logical</td>
+        <td><code>and or not</code></td>
+      </tr>
+      <tr>
+        <td>Membership</td>
+        <td><code>in, not in</code></td>
+      </tr>
+      <tr>
+        <td>Identity</td>
+        <td><code>is, is not</code></td>
+      </tr>
+    </table>
+
+    <p>
+      Is lesson me hum especially <strong>Arithmetic</strong> aur <strong>Comparison</strong>
+      operators par focus karenge.
+    </p>
+  </section>
+
+  <section class="card" id="arithmetic">
+    <h2>10. Arithmetic Operators</h2>
+
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Name</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>+</td>
+        <td>Addition</td>
+        <td><code>10 + 3</code></td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>Subtraction</td>
+        <td><code>10 - 3</code></td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>Multiplication</td>
+        <td><code>10 * 3</code></td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>Division</td>
+        <td><code>10 / 3</code></td>
+        <td>3.333...</td>
+      </tr>
+      <tr>
+        <td>//</td>
+        <td>Floor Division</td>
+        <td><code>10 // 3</code></td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>%</td>
+        <td>Modulus</td>
+        <td><code>10 % 3</code></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>**</td>
+        <td>Exponent</td>
+        <td><code>2 ** 3</code></td>
+        <td>8</td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+    <pre><code>a = 20
+b = 6
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a % b)
+print(a ** 2)</code></pre>
+
+    <div class="highlight">
+      <strong>DevOps Example:</strong>
+      Modulus <code>%</code> ka use conditions me ho sakta hai, jaise kisi number ke even/odd hone ko check karna.
+    </div>
+  </section>
+
+  <section class="card" id="comparison">
+    <h2>11. Comparison Operators</h2>
+
+    <p>
+      Comparison operators do values ko compare karte hain aur result generally
+      <code>True</code> ya <code>False</code> hota hai.
+    </p>
+
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Meaning</th>
+        <th>Example</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>==</td>
+        <td>Equal</td>
+        <td><code>10 == 10</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>!=</td>
+        <td>Not Equal</td>
+        <td><code>10 != 5</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>&gt;</td>
+        <td>Greater Than</td>
+        <td><code>10 &gt; 5</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>&lt;</td>
+        <td>Less Than</td>
+        <td><code>10 &lt; 5</code></td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <td>&gt;=</td>
+        <td>Greater or Equal</td>
+        <td><code>10 &gt;= 10</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>&lt;=</td>
+        <td>Less or Equal</td>
+        <td><code>10 &lt;= 5</code></td>
+        <td>False</td>
+      </tr>
+    </table>
+
+    <h3>Example</h3>
+    <pre><code>cpu_usage = 75
+
+print(cpu_usage > 80)
+print(cpu_usage == 75)
+print(cpu_usage != 50)</code></pre>
+
+    <h3>DevOps Use Case</h3>
+    <pre><code>cpu_usage = 85
+
+if cpu_usage > 80:
+    print("Warning: High CPU usage")</code></pre>
+
+    <p>
+      Ye monitoring automation ka basic concept demonstrate karta hai:
+      metric ko threshold se compare karo aur required action lo.
+    </p>
+  </section>
+
+  <section class="card" id="fstring">
+    <h2>12. f-Strings</h2>
+
+    <p>
+      <strong>f-string</strong> Python me strings ke andar variables aur expressions ko
+      easily insert karne ka convenient method hai.
+    </p>
+
+    <h3>Basic Syntax</h3>
+    <pre><code>name = "Pavan"
+print(f"Hello {name}")</code></pre>
+
+    <h3>Multiple Variables</h3>
+    <pre><code>name = "Pavan"
+role = "DevOps Engineer"
+
+print(f"My name is {name} and I am learning {role}.")</code></pre>
+
+    <h3>Expression inside f-string</h3>
+    <pre><code>a = 10
+b = 20
+
+print(f"Sum = {a + b}")</code></pre>
+
+    <h3>Formatting Numbers</h3>
+    <pre><code>price = 99.5678
+
+print(f"Price: {price:.2f}")</code></pre>
+
+    <p>Output:</p>
+    <pre><code>Price: 99.57</code></pre>
+
+    <h3>DevOps Example</h3>
+    <pre><code>server = "web-server-01"
+cpu = 87
+
+print(f"Server {server} CPU usage is {cpu}%")</code></pre>
+
+    <div class="tip">
+      <strong>Why f-string?</strong>
+      Logs, status messages, monitoring output aur automation scripts me readable messages
+      generate karne ke liye bahut useful hai.
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <h2>13. Practice Assignments</h2>
+
+    <h3>Assignment 1 — Introduction</h3>
+    <p>
+      Variables ka use karke name, age, city aur career goal store karo aur print karo.
+    </p>
+
+    <h3>Assignment 2 — Calculator</h3>
+    <p>
+      User se two numbers input lo aur addition, subtraction, multiplication aur division display karo.
+    </p>
+
+    <h3>Assignment 3 — Type Checker</h3>
+    <p>
+      Different variables banao aur <code>type()</code> se unke data types print karo.
+    </p>
+
+    <h3>Assignment 4 — Type Conversion</h3>
+    <p>
+      User se age string ke form me lo, integer me convert karo aur next year ki age print karo.
+    </p>
+
+    <h3>Assignment 5 — Server Threshold</h3>
+    <p>
+      CPU usage input lo. Agar CPU usage 80 se greater ho to warning print karo.
+    </p>
+
+    <h3>Assignment 6 — f-string</h3>
+    <p>
+      Server name, IP address aur port ko variables me store karke ek formatted message print karo.
+    </p>
+
+    <h3>Mini Project — System Status Reporter</h3>
+    <pre><code>server = input("Enter server name: ")
+cpu = int(input("Enter CPU usage (%): "))
+memory = int(input("Enter memory usage (%): "))
+
+print(f"Server: {server}")
+print(f"CPU Usage: {cpu}%")
+print(f"Memory Usage: {memory}%")
+
+if cpu > 80:
+    print(f"WARNING: {server} has high CPU usage!")
+else:
+    print(f"{server} CPU usage is normal.")</code></pre>
+  </section>
+
+  <section class="card" id="interview">
+    <h2>14. Interview Questions</h2>
+
+    <div class="quiz">
+      <ol>
+        <li>What is Python?</li>
+        <li>Why is Python useful in DevOps?</li>
+        <li>What is a Python interpreter?</li>
+        <li>How do you check Python version in Linux?</li>
+        <li>How do you execute a Python file?</li>
+        <li>What is a variable?</li>
+        <li>What are common Python data types?</li>
+        <li>What is dynamic typing?</li>
+        <li>What does <code>type()</code> do?</li>
+        <li>What is type conversion?</li>
+        <li>What does <code>input()</code> return by default?</li>
+        <li>What are arithmetic operators?</li>
+        <li>Difference between <code>/</code> and <code>//</code>?</li>
+        <li>What does <code>%</code> operator do?</li>
+        <li>What are comparison operators?</li>
+        <li>What is an f-string?</li>
+        <li>Why are f-strings useful in DevOps scripts?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🎯 Learning Order for DevOps</h2>
+
+    <p>In topics ko is order me practice karo:</p>
+
+    <ol>
+      <li>Python basics and syntax</li>
+      <li>Variables</li>
+      <li>Data types</li>
+      <li><code>type()</code></li>
+      <li>Type conversion</li>
+      <li><code>input()</code></li>
+      <li>Operators</li>
+      <li>f-strings</li>
+      <li>Conditions</li>
+      <li>Loops</li>
+      <li>Functions</li>
+      <li>Lists, tuples, sets, dictionaries</li>
+      <li>Files</li>
+      <li>Exceptions</li>
+      <li>Modules and packages</li>
+      <li>OS/system automation</li>
+      <li>Subprocess</li>
+      <li>Requests/APIs</li>
+      <li>Cloud SDKs</li>
+      <li>DevOps automation projects</li>
+    </ol>
+
+    <div class="highlight">
+      <strong>DevOps Learning Rule:</strong>
+      Har Python topic ke baad ek chhota automation task banao.
+      Sirf theory padhne ke bajay code likho, terminal me run karo aur error ko khud solve karo.
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>🐍 Python for DevOps — Beginner Notes</p>
+  <p>Practice → Build → Automate → Repeat</p>
+</footer>
+
+</body>
+</html>
