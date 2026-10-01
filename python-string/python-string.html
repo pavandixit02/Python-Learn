@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python String</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: #1f2937;
+      background: #f4f7fb;
+    }
+    header {
+      background: linear-gradient(135deg, #111827, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    header h1 { margin: 0 0 10px; font-size: 2.5rem; }
+    header p { margin: 5px 0; }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+    .card, .toc {
+      background: white;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    }
+    h2 {
+      color: #1e40af;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
+      margin-top: 0;
+    }
+    h3 { color: #374151; margin-top: 25px; }
+    .toc ul { columns: 2; }
+    .toc a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    .toc a:hover { text-decoration: underline; }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: .95rem;
+    }
+    code {
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .tip {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .important {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #dbe2ea;
+      padding: 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #dbeafe;
+      color: #1e3a8a;
+    }
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 9px;
+      border-radius: 20px;
+      margin: 3px;
+      font-size: .85rem;
+    }
+    .output {
+      background: #f3f4f6;
+      border-left: 4px solid #6b7280;
+      padding: 12px 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    footer {
+      text-align: center;
+      color: #6b7280;
+      padding: 30px;
+    }
+    @media(max-width:700px) {
+      .toc ul { columns: 1; }
+      header h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🐍 Python Strings</h1>
+  <p>Complete Beginner Notes for DevOps</p>
+  <p>Concept → Syntax → Example → Output → Practical Use → Practice</p>
+</header>
+
+<div class="container">
+
+  <div class="toc">
+    <h2>📚 Topics Covered</h2>
+    <ul>
+      <li><a href="#what-string">1. What is String?</a></li>
+      <li><a href="#quotes">2. Single & Double Quotes</a></li>
+      <li><a href="#concat">3. String Concatenation</a></li>
+      <li><a href="#length">4. String Length</a></li>
+      <li><a href="#indexing">5. Indexing</a></li>
+      <li><a href="#negative-indexing">6. Negative Indexing</a></li>
+      <li><a href="#slicing">7. Slicing</a></li>
+      <li><a href="#useful-slicing">8. Useful Slicing Techniques</a></li>
+      <li><a href="#methods">9. String Methods</a></li>
+      <li><a href="#strip">10. strip()</a></li>
+      <li><a href="#split">11. split()</a></li>
+      <li><a href="#join">12. join()</a></li>
+      <li><a href="#startswith">13. startswith()</a></li>
+      <li><a href="#endswith">14. endswith()</a></li>
+      <li><a href="#find">15. find()</a></li>
+      <li><a href="#in">16. in Operator</a></li>
+      <li><a href="#devops">17. String in DevOps</a></li>
+      <li><a href="#practice">18. Practice Assignments</a></li>
+      <li><a href="#interview">19. Interview Questions</a></li>
+    </ul>
+  </div>
+
+  <section class="card" id="what-string">
+    <h2>1. What is String?</h2>
+
+    <p>
+      Python me <strong>String</strong> characters ka sequence hota hai.
+      String ka use text/data ko store karne ke liye hota hai.
+    </p>
+
+    <div class="highlight">
+      <strong>Simple Definition:</strong><br>
+      String = Text data ka collection/sequence.
+    </div>
+
+    <h3>Examples</h3>
+    <pre><code>name = "Pavan"
+city = "Mathura"
+message = "Hello Python"
+server = "web-server-01"</code></pre>
+
+    <p>In sabhi variables me string values store hain.</p>
+
+    <h3>Empty String</h3>
+    <pre><code>name = ""</code></pre>
+
+    <p>
+      <code>""</code> ek valid empty string hai. Isme koi character nahi hai,
+      lekin data type <code>str</code> hi hoga.
+    </p>
+
+    <pre><code>name = ""
+
+print(type(name))
+print(len(name))</code></pre>
+
+    <div class="tip">
+      <strong>DevOps Example:</strong>
+      Server names, file names, URLs, IP addresses, log messages, usernames,
+      environment names aur command output me strings bahut commonly use hote hain.
+    </div>
+  </section>
+
+  <section class="card" id="quotes">
+    <h2>2. Single & Double Quotes</h2>
+
+    <p>
+      Python me string create karne ke liye commonly single quotes
+      <code>' '</code> aur double quotes <code>" "</code> dono use kar sakte hain.
+    </p>
+
+    <h3>Single Quotes</h3>
+    <pre><code>name = 'Pavan'
+print(name)</code></pre>
+
+    <h3>Double Quotes</h3>
+    <pre><code>name = "Pavan"
+print(name)</code></pre>
+
+    <p>Dono ka result string hi hota hai:</p>
+    <pre><code>print(type('Pavan'))
+print(type("Pavan"))</code></pre>
+
+    <h3>Quotes ke andar Quotes</h3>
+    <p>
+      Agar string ke andar apostrophe ho to outer quotes carefully choose kar sakte ho.
+    </p>
+
+    <pre><code>message = "Pavan's Python class"
+print(message)</code></pre>
+
+    <p>Ya escaping ka use:</p>
+
+    <pre><code>message = 'Pavan\'s Python class'
+print(message)</code></pre>
+
+    <div class="warning">
+      <strong>Common Mistake:</strong>
+      Opening aur closing quote same type ka hona chahiye.
+      <br><br>
+      Wrong:
+      <code>name = "Pavan'</code>
+    </div>
+
+    <h3>Triple Quotes</h3>
+    <p>
+      Multi-line strings ke liye triple single ya triple double quotes use kiye ja sakte hain.
+    </p>
+
+    <pre><code>message = """Hello Pavan
+Welcome to Python
+Learn Python for DevOps"""
+
+print(message)</code></pre>
+  </section>
+
+  <section class="card" id="concat">
+    <h2>3. String Concatenation</h2>
+
+    <p>
+      <strong>Concatenation</strong> ka matlab hai do ya multiple strings ko combine karna.
+      Python me commonly <code>+</code> operator ka use hota hai.
+    </p>
+
+    <pre><code>first_name = "Pavan"
+last_name = "Dixit"
+
+full_name = first_name + " " + last_name
+
+print(full_name)</code></pre>
+
+    <div class="output">Pavan Dixit</div>
+
+    <h3>Without Space</h3>
+    <pre><code>a = "Hello"
+b = "World"
+
+print(a + b)</code></pre>
+
+    <div class="output">HelloWorld</div>
+
+    <h3>With Space</h3>
+    <pre><code>print(a + " " + b)</code></pre>
+
+    <div class="output">Hello World</div>
+
+    <h3>String + Number?</h3>
+    <p>
+      Directly string aur integer ko <code>+</code> se combine nahi kar sakte.
+    </p>
+
+    <pre><code>age = 22
+
+# Wrong:
+# print("Age: " + age)</code></pre>
+
+    <p>Number ko string me convert karo:</p>
+
+    <pre><code>age = 22
+
+print("Age: " + str(age))</code></pre>
+
+    <div class="tip">
+      Modern Python me readable output ke liye concatenation ke instead
+      <strong>f-string</strong> bhi use karna useful hai:
+      <code>print(f"Age: {age}")</code>
+    </div>
+  </section>
+
+  <section class="card" id="length">
+    <h2>4. String Length — len()</h2>
+
+    <p>
+      <code>len()</code> function string me kitne characters hain ye count karta hai.
+    </p>
+
+    <pre><code>name = "Pavan"
+
+print(len(name))</code></pre>
+
+    <div class="output">5</div>
+
+    <h3>Characters ka Count</h3>
+    <pre><code>text = "Python"
+
+print(len(text))</code></pre>
+
+    <div class="output">6</div>
+
+    <h3>Space bhi count hota hai</h3>
+    <pre><code>text = "Hello World"
+
+print(len(text))</code></pre>
+
+    <div class="output">11</div>
+
+    <p>
+      "Hello" = 5, space = 1, "World" = 5 → total 11.
+    </p>
+
+    <h3>Empty String</h3>
+    <pre><code>text = ""
+
+print(len(text))</code></pre>
+
+    <div class="output">0</div>
+
+    <div class="tip">
+      <strong>DevOps Use:</strong>
+      Input validation, file names, environment variables aur configuration values
+      ki length check karne me <code>len()</code> useful hai.
+    </div>
+  </section>
+
+  <section class="card" id="indexing">
+    <h2>5. Indexing</h2>
+
+    <p>
+      String ek sequence hai, isliye hum uske individual characters ko
+      <strong>index</strong> ke through access kar sakte hain.
+    </p>
+
+    <div class="highlight">
+      Python me indexing <strong>0 se start</strong> hoti hai.
+    </div>
+
+    <pre><code>text = "Python"
+
+# Index:   0 1 2 3 4 5
+# Character P y t h o n
+
+print(text[0])
+print(text[1])
+print(text[2])
+print(text[5])</code></pre>
+
+    <div class="output">P
+y
+t
+n</div>
+
+    <h3>Visual Representation</h3>
+    <table>
+      <tr>
+        <th>Character</th>
+        <td>P</td>
+        <td>y</td>
+        <td>t</td>
+        <td>h</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Index</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+    </table>
+
+    <h3>Last Character</h3>
+    <pre><code>text = "Python"
+
+print(text[len(text) - 1])</code></pre>
+
+    <p>Output:</p>
+    <div class="output">n</div>
+
+    <div class="important">
+      <strong>Common Error:</strong>
+      Agar index range se bahar chala gaya to <code>IndexError</code> milega.
+      <br><br>
+      Example: <code>text = "Python"; print(text[10])</code>
+    </div>
+  </section>
+
+  <section class="card" id="negative-indexing">
+    <h2>6. Negative Indexing</h2>
+
+    <p>
+      Python me negative indexing se string ko end se access kar sakte hain.
+    </p>
+
+    <table>
+      <tr>
+        <th>Character</th>
+        <td>P</td>
+        <td>y</td>
+        <td>t</td>
+        <td>h</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Positive</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <th>Negative</th>
+        <td>-6</td>
+        <td>-5</td>
+        <td>-4</td>
+        <td>-3</td>
+        <td>-2</td>
+        <td>-1</td>
+      </tr>
+    </table>
+
+    <pre><code>text = "Python"
+
+print(text[-1])
+print(text[-2])
+print(text[-3])</code></pre>
+
+    <div class="output">n
+o
+h</div>
+
+    <div class="tip">
+      <strong>Easy Rule:</strong>
+      <code>-1</code> = last character,
+      <code>-2</code> = second-last,
+      <code>-3</code> = third-last.
+    </div>
+
+    <h3>Practical Example</h3>
+    <pre><code>filename = "server.log"
+
+print(filename[-3:])</code></pre>
+
+    <div class="output">log</div>
+  </section>
+
+  <section class="card" id="slicing">
+    <h2>7. Slicing</h2>
+
+    <p>
+      Slicing ka use string ke ek portion/part ko extract karne ke liye hota hai.
+    </p>
+
+    <div class="highlight">
+      <strong>Syntax:</strong>
+      <code>string[start:stop]</code>
+      <br>
+      Start index included hota hai, stop index excluded hota hai.
+    </div>
+
+    <pre><code>text = "Python"
+
+print(text[0:2])
+print(text[1:4])
+print(text[2:6])</code></pre>
+
+    <div class="output">Py
+yth
+thon</div>
+
+    <h3>Important Rule</h3>
+    <p>
+      <code>text[1:4]</code> ka matlab indexes 1, 2, 3 — index 4 include nahi hota.
+    </p>
+
+    <h3>Start Omit Karna</h3>
+    <pre><code>text = "Python"
+
+print(text[:3])</code></pre>
+
+    <div class="output">Pyt</div>
+
+    <p>
+      <code>[:3]</code> = beginning se index 3 se pehle tak.
+    </p>
+
+    <h3>Stop Omit Karna</h3>
+    <pre><code>print(text[2:])</code></pre>
+
+    <div class="output">thon</div>
+
+    <p>
+      <code>[2:]</code> = index 2 se end tak.
+    </p>
+
+    <h3>Copy Entire String</h3>
+    <pre><code>print(text[:])</code></pre>
+
+    <div class="output">Python</div>
+  </section>
+
+  <section class="card" id="useful-slicing">
+    <h2>8. Useful Slicing Techniques</h2>
+
+    <h3>1. Step</h3>
+    <p>
+      Slicing ka complete form hai:
+      <code>string[start:stop:step]</code>
+    </p>
+
+    <pre><code>text = "Python"
+
+print(text[0:6:2])</code></pre>
+
+    <div class="output">Pto</div>
+
+    <p>
+      Index 0 → P, 2 → t, 4 → o.
+    </p>
+
+    <h3>2. Every Second Character</h3>
+    <pre><code>text = "ABCDEFGH"
+
+print(text[::2])</code></pre>
+
+    <div class="output">ACEG</div>
+
+    <h3>3. Every Third Character</h3>
+    <pre><code>print(text[::3])</code></pre>
+
+    <div class="output">ADG</div>
+
+    <h3>4. Reverse String</h3>
+    <pre><code>text = "Python"
+
+print(text[::-1])</code></pre>
+
+    <div class="output">nohtyP</div>
+
+    <div class="tip">
+      <strong>Remember:</strong>
+      <code>[::-1]</code> Python me string/list ko reverse karne ka very common shortcut hai.
+    </div>
+
+    <h3>5. Last 3 Characters</h3>
+    <pre><code>filename = "server.log"
+
+print(filename[-3:])</code></pre>
+
+    <div class="output">log</div>
+
+    <h3>6. First 4 Characters</h3>
+    <pre><code>server = "web-server"
+
+print(server[:4])</code></pre>
+
+    <div class="output">web-</div>
+
+    <h3>7. Remove First Character</h3>
+    <pre><code>text = "Python"
+
+print(text[1:])</code></pre>
+
+    <div class="output">ython</div>
+
+    <h3>8. Remove Last Character</h3>
+    <pre><code>text = "Python"
+
+print(text[:-1])</code></pre>
+
+    <div class="output">Pytho</div>
+
+    <h3>9. Useful DevOps Example — File Extension</h3>
+    <pre><code>filename = "backup.tar.gz"
+
+print(filename[-2:])</code></pre>
+
+    <p>
+      Note: real file extensions ke liye slicing ke saath-saath
+      <code>split()</code> ya <code>pathlib</code> jaise safer approaches bhi use kiye ja sakte hain.
+    </p>
+  </section>
+
+  <section class="card" id="methods">
+    <h2>9. Methods in String</h2>
+
+    <p>
+      String methods built-in operations hain jo string ke saath common tasks perform karne me help karte hain.
+    </p>
+
+    <p>Examples:</p>
+
+    <div>
+      <span class="badge">strip()</span>
+      <span class="badge">split()</span>
+      <span class="badge">join()</span>
+      <span class="badge">startswith()</span>
+      <span class="badge">endswith()</span>
+      <span class="badge">find()</span>
+      <span class="badge">upper()</span>
+      <span class="badge">lower()</span>
+      <span class="badge">replace()</span>
+    </div>
+
+    <h3>Method ka Basic Syntax</h3>
+    <pre><code>string.method()</code></pre>
+
+    <p>Example:</p>
+    <pre><code>name = "pavan"
+
+print(name.upper())</code></pre>
+
+    <div class="output">PAVAN</div>
+
+    <div class="important">
+      <strong>Important:</strong>
+      Python strings immutable hoti hain. String method generally original string ko modify nahi karta;
+      instead ek new string return karta hai.
+    </div>
+  </section>
+
+  <section class="card" id="strip">
+    <h2>10. strip()</h2>
+
+    <p>
+      <code>strip()</code> string ke beginning aur end ke unwanted whitespace ko remove karta hai.
+    </p>
+
+    <pre><code>name = "   Pavan   "
+
+print(name.strip())</code></pre>
+
+    <div class="output">Pavan</div>
+
+    <h3>lstrip()</h3>
+    <p>Left side ka whitespace remove karta hai.</p>
+
+    <pre><code>text = "   Python"
+print(text.lstrip())</code></pre>
+
+    <div class="output">Python</div>
+
+    <h3>rstrip()</h3>
+    <p>Right side ka whitespace remove karta hai.</p>
+
+    <pre><code>text = "Python   "
+print(text.rstrip())</code></pre>
+
+    <div class="output">Python</div>
+
+    <h3>Why Useful in DevOps?</h3>
+    <pre><code>server = input("Enter server: ").strip()
+
+print(f"Connecting to {server}")</code></pre>
+
+    <p>
+      User input ya command output me extra spaces ho sakte hain; <code>strip()</code>
+      clean data ke liye useful hai.
+    </p>
+
+    <div class="warning">
+      <strong>Note:</strong>
+      <code>strip()</code> string ke beech ke spaces remove nahi karta.
+    </div>
+  </section>
+
+  <section class="card" id="split">
+    <h2>11. split()</h2>
+
+    <p>
+      <code>split()</code> string ko parts me divide karke <strong>list</strong> return karta hai.
+    </p>
+
+    <pre><code>text = "Python for DevOps"
+
+words = text.split()
+
+print(words)</code></pre>
+
+    <div class="output">['Python', 'for', 'DevOps']</div>
+
+    <p>
+      Default me whitespace ke basis par split hota hai.
+    </p>
+
+    <h3>Comma ke basis par Split</h3>
+    <pre><code>servers = "web,db,cache"
+
+print(servers.split(","))</code></pre>
+
+    <div class="output">['web', 'db', 'cache']</div>
+
+    <h3>Specific Separator</h3>
+    <pre><code>data = "pavan@example.com"
+
+print(data.split("@"))</code></pre>
+
+    <div class="output">['pavan', 'example.com']</div>
+
+    <h3>Limit ke saath</h3>
+    <pre><code>text = "one-two-three-four"
+
+print(text.split("-", 2))</code></pre>
+
+    <div class="output">['one', 'two', 'three-four']</div>
+
+    <div class="tip">
+      <strong>DevOps Use:</strong>
+      Logs, command output, CSV-like values, environment variables aur configuration
+      strings ko parse karne me <code>split()</code> bahut useful hai.
+    </div>
+  </section>
+
+  <section class="card" id="join">
+    <h2>12. join()</h2>
+
+    <p>
+      <code>join()</code> ka use multiple strings ko ek single string me combine karne ke liye hota hai.
+    </p>
+
+    <div class="highlight">
+      <strong>Important:</strong>
+      <code>split()</code> string → list karta hai,
+      jabki <code>join()</code> list/iterable → string karta hai.
+    </div>
+
+    <pre><code>words = ["Python", "for", "DevOps"]
+
+sentence = " ".join(words)
+
+print(sentence)</code></pre>
+
+    <div class="output">Python for DevOps</div>
+
+    <h3>Comma Separator</h3>
+    <pre><code>servers = ["web", "db", "cache"]
+
+result = ", ".join(servers)
+
+print(result)</code></pre>
+
+    <div class="output">web, db, cache</div>
+
+    <h3>Hyphen Separator</h3>
+    <pre><code>parts = ["2026", "10", "01"]
+
+date = "-".join(parts)
+
+print(date)</code></pre>
+
+    <div class="output">2026-10-01</div>
+
+    <h3>Split + Join Together</h3>
+    <pre><code>text = "Python    for    DevOps"
+
+words = text.split()
+clean_text = " ".join(words)
+
+print(clean_text)</code></pre>
+
+    <div class="output">Python for DevOps</div>
+
+    <p>
+      Ye technique extra whitespace ko normalize karne ke liye useful hai.
+    </p>
+  </section>
+
+  <section class="card" id="startswith">
+    <h2>13. startswith()</h2>
+
+    <p>
+      <code>startswith()</code> check karta hai ki string kisi particular text se start hoti hai ya nahi.
+      Result <code>True</code> ya <code>False</code> hota hai.
+    </p>
+
+    <pre><code>filename = "backup.tar.gz"
+
+print(filename.startswith("backup"))
+print(filename.startswith("server"))</code></pre>
+
+    <div class="output">True
+False</div>
+
+    <h3>Practical Example</h3>
+    <pre><code>log = "ERROR: Disk full"
+
+if log.startswith("ERROR"):
+    print("Error log detected")</code></pre>
+
+    <h3>Multiple Possible Prefixes</h3>
+    <pre><code>filename = "backup-2026.tar"
+
+print(filename.startswith(("backup", "archive")))</code></pre>
+
+    <div class="output">True</div>
+
+    <div class="tip">
+      <strong>DevOps Use:</strong>
+      Logs ko classify karna, file naming patterns check karna,
+      command output ke prefixes identify karna.
+    </div>
+  </section>
+
+  <section class="card" id="endswith">
+    <h2>14. endswith()</h2>
+
+    <p>
+      <code>endswith()</code> check karta hai ki string kisi particular text se end hoti hai ya nahi.
+    </p>
+
+    <pre><code>filename = "server.log"
+
+print(filename.endswith(".log"))
+print(filename.endswith(".txt"))</code></pre>
+
+    <div class="output">True
+False</div>
+
+    <h3>File Type Check</h3>
+    <pre><code>filename = "config.yaml"
+
+if filename.endswith(".yaml"):
+    print("YAML configuration file")</code></pre>
+
+    <h3>Multiple Extensions</h3>
+    <pre><code>filename = "config.yml"
+
+print(filename.endswith((".yaml", ".yml")))</code></pre>
+
+    <div class="output">True</div>
+
+    <div class="tip">
+      <strong>DevOps Use:</strong>
+      Logs, configuration files, scripts aur generated artifacts ke extensions check karne me useful.
+    </div>
+  </section>
+
+  <section class="card" id="find">
+    <h2>15. find()</h2>
+
+    <p>
+      <code>find()</code> string ke andar kisi substring ka first matching index return karta hai.
+    </p>
+
+    <pre><code>text = "Python for DevOps"
+
+print(text.find("DevOps"))</code></pre>
+
+    <div class="output">11</div>
+
+    <p>
+      "DevOps" ka first character <code>D</code> index 11 par hai.
+    </p>
+
+    <h3>Substring Not Found</h3>
+    <pre><code>text = "Python"
+
+print(text.find("Java"))</code></pre>
+
+    <div class="output">-1</div>
+
+    <div class="highlight">
+      <strong>Important:</strong>
+      <code>find()</code> substring nahi milne par <code>-1</code> return karta hai.
+    </div>
+
+    <h3>Start Position ke baad Search</h3>
+    <pre><code>text = "Python Python"
+
+print(text.find("Python", 1))</code></pre>
+
+    <p>
+      Search index 1 se start hoga, isliye second occurrence mil sakta hai.
+    </p>
+
+    <h3>Practical Log Example</h3>
+    <pre><code>log = "INFO: Server started successfully"
+
+position = log.find("Server")
+
+if position != -1:
+    print("Server keyword found")
+    print("Position:", position)</code></pre>
+  </section>
+
+  <section class="card" id="in">
+    <h2>16. in Operator</h2>
+
+    <p>
+      <code>in</code> operator check karta hai ki koi character ya substring
+      string ke andar present hai ya nahi.
+    </p>
+
+    <pre><code>text = "Python for DevOps"
+
+print("Python" in text)
+print("DevOps" in text)
+print("Java" in text)</code></pre>
+
+    <div class="output">True
+True
+False</div>
+
+    <h3>if ke saath</h3>
+    <pre><code>log = "ERROR: Connection failed"
+
+if "ERROR" in log:
+    print("Error detected!")</code></pre>
+
+    <h3>not in</h3>
+    <pre><code>text = "Python"
+
+if "Java" not in text:
+    print("Java is not present")</code></pre>
+
+    <div class="output">Java is not present</div>
+
+    <h3>find() vs in</h3>
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Result</th>
+        <th>Use</th>
+      </tr>
+      <tr>
+        <td><code>in</code></td>
+        <td>True / False</td>
+        <td>Sirf presence check karni ho</td>
+      </tr>
+      <tr>
+        <td><code>find()</code></td>
+        <td>Index / -1</td>
+        <td>Substring ki position chahiye</td>
+      </tr>
+    </table>
+
+    <pre><code>text = "Python"
+
+print("tho" in text)       # True
+print(text.find("tho"))    # 2</code></pre>
+  </section>
+
+  <section class="card" id="devops">
+    <h2>17. Strings in DevOps — Practical Examples</h2>
+
+    <h3>Example 1 — Log Detection</h3>
+    <pre><code>log = "ERROR: Database connection failed"
+
+if "ERROR" in log:
+    print("Alert: Error found in logs")</code></pre>
+
+    <h3>Example 2 — Log Cleanup</h3>
+    <pre><code>log = "   ERROR: Disk full   "
+
+clean_log = log.strip()
+
+print(clean_log)</code></pre>
+
+    <h3>Example 3 — File Extension Check</h3>
+    <pre><code>filename = "deployment.yaml"
+
+if filename.endswith((".yaml", ".yml")):
+    print("Kubernetes configuration file")</code></pre>
+
+    <h3>Example 4 — Parse Server List</h3>
+    <pre><code>servers = "web01,web02,db01"
+
+server_list = servers.split(",")
+
+print(server_list)</code></pre>
+
+    <h3>Example 5 — Create Command from List</h3>
+    <pre><code>parts = ["docker", "ps", "-a"]
+
+command = " ".join(parts)
+
+print(command)</code></pre>
+
+    <h3>Example 6 — Normalize User Input</h3>
+    <pre><code>environment = input("Enter environment: ").strip().lower()
+
+if environment == "production":
+    print("Production environment selected")
+else:
+    print(f"Selected environment: {environment}")</code></pre>
+
+    <div class="tip">
+      <strong>DevOps Connection:</strong>
+      Real automation scripts me strings ka use bahut common hai:
+      logs parse karna, commands build karna, filenames check karna,
+      environment variables process karna, API responses handle karna aur configuration data clean karna.
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <h2>18. Practice Assignments</h2>
+
+    <h3>Assignment 1 — Basic String</h3>
+    <p>
+      Apna name, city, course aur goal string variables me store karo aur print karo.
+    </p>
+
+    <h3>Assignment 2 — Length</h3>
+    <p>
+      User se name input lo aur <code>len()</code> se uski length print karo.
+    </p>
+
+    <h3>Assignment 3 — Indexing</h3>
+    <p>
+      <code>"DevOps"</code> string ka first, third aur last character indexing se print karo.
+    </p>
+
+    <h3>Assignment 4 — Negative Indexing</h3>
+    <p>
+      <code>"Kubernetes"</code> ke last 3 characters negative indexing/slicing se nikalo.
+    </p>
+
+    <h3>Assignment 5 — Slicing</h3>
+    <p>
+      <code>"PythonAutomation"</code> me se <code>"Python"</code> aur <code>"Automation"</code>
+      slicing se extract karo.
+    </p>
+
+    <h3>Assignment 6 — Reverse</h3>
+    <p>
+      User se string lo aur <code>[::-1]</code> se reverse print karo.
+    </p>
+
+    <h3>Assignment 7 — strip()</h3>
+    <p>
+      Extra spaces wale username ko clean karo.
+    </p>
+
+    <h3>Assignment 8 — split()</h3>
+    <p>
+      <code>"docker,kubernetes,jenkins,terraform"</code> ko list me convert karo.
+    </p>
+
+    <h3>Assignment 9 — join()</h3>
+    <p>
+      <code>["Python", "Linux", "Docker", "Kubernetes"]</code> ko comma-separated string me convert karo.
+    </p>
+
+    <h3>Assignment 10 — startswith/endswith</h3>
+    <p>
+      Check karo ki filename <code>"backup"</code> se start hota hai aur <code>".tar.gz"</code> par end hota hai.
+    </p>
+
+    <h3>Assignment 11 — find()</h3>
+    <p>
+      Log string me <code>"ERROR"</code> keyword ki position find karo.
+    </p>
+
+    <h3>Assignment 12 — in</h3>
+    <p>
+      Check karo ki log message me <code>"failed"</code> keyword present hai ya nahi.
+    </p>
+
+    <h3>🔥 Mini Project — Log Analyzer</h3>
+    <pre><code>log = input("Enter log message: ").strip()
+
+print(f"Log: {log}")
+
+if "ERROR" in log:
+    print("Status: ERROR detected")
+elif "WARNING" in log:
+    print("Status: WARNING detected")
+else:
+    print("Status: Normal")
+
+print(f"Log length: {len(log)}")
+
+if log.startswith("ERROR"):
+    print("This log starts with ERROR")
+
+if log.endswith("!"):
+    print("Log ends with !")</code></pre>
+
+    <p>
+      Is mini project me tumne <code>input()</code>, <code>strip()</code>,
+      <code>in</code>, <code>startswith()</code>, <code>endswith()</code>,
+      <code>len()</code> aur f-string ko combine kiya.
+    </p>
+  </section>
+
+  <section class="card" id="interview">
+    <h2>19. Interview Questions</h2>
+
+    <ol>
+      <li>What is a string in Python?</li>
+      <li>How do you create a string in Python?</li>
+      <li>What is the difference between single and double quotes?</li>
+      <li>What is string concatenation?</li>
+      <li>How do you concatenate a string and an integer?</li>
+      <li>What does <code>len()</code> do?</li>
+      <li>Does <code>len()</code> count spaces?</li>
+      <li>What is string indexing?</li>
+      <li>Why does Python indexing start from 0?</li>
+      <li>What is negative indexing?</li>
+      <li>What is string slicing?</li>
+      <li>What is the difference between <code>text[1:4]</code> and <code>text[1:5]</code>?</li>
+      <li>What does <code>text[::-1]</code> do?</li>
+      <li>What does <code>strip()</code> do?</li>
+      <li>Difference between <code>strip()</code>, <code>lstrip()</code> and <code>rstrip()</code>?</li>
+      <li>What does <code>split()</code> return?</li>
+      <li>What is the difference between <code>split()</code> and <code>join()</code>?</li>
+      <li>What does <code>startswith()</code> return?</li>
+      <li>What does <code>endswith()</code> return?</li>
+      <li>What does <code>find()</code> return when substring is not found?</li>
+      <li>Difference between <code>find()</code> and <code>in</code>?</li>
+      <li>Are Python strings mutable or immutable?</li>
+      <li>How can strings be useful in DevOps automation?</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>🎯 Quick Revision Cheat Sheet</h2>
+
+    <table>
+      <tr>
+        <th>Concept</th>
+        <th>Syntax / Example</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>String</td>
+        <td><code>"Python"</code></td>
+        <td>Text store karna</td>
+      </tr>
+      <tr>
+        <td>Concatenation</td>
+        <td><code>"Hello " + "World"</code></td>
+        <td>Strings combine karna</td>
+      </tr>
+      <tr>
+        <td>Length</td>
+        <td><code>len(text)</code></td>
+        <td>Characters count karna</td>
+      </tr>
+      <tr>
+        <td>Indexing</td>
+        <td><code>text[0]</code></td>
+        <td>Character access</td>
+      </tr>
+      <tr>
+        <td>Negative Index</td>
+        <td><code>text[-1]</code></td>
+        <td>End se character access</td>
+      </tr>
+      <tr>
+        <td>Slicing</td>
+        <td><code>text[1:4]</code></td>
+        <td>String ka part extract karna</td>
+      </tr>
+      <tr>
+        <td>Reverse</td>
+        <td><code>text[::-1]</code></td>
+        <td>String reverse karna</td>
+      </tr>
+      <tr>
+        <td>strip</td>
+        <td><code>text.strip()</code></td>
+        <td>Outer whitespace remove</td>
+      </tr>
+      <tr>
+        <td>split</td>
+        <td><code>text.split(",")</code></td>
+        <td>String → list</td>
+      </tr>
+      <tr>
+        <td>join</td>
+        <td><code>",".join(items)</code></td>
+        <td>List/iterable → string</td>
+      </tr>
+      <tr>
+        <td>startswith</td>
+        <td><code>text.startswith("Py")</code></td>
+        <td>Beginning check</td>
+      </tr>
+      <tr>
+        <td>endswith</td>
+        <td><code>text.endswith(".log")</code></td>
+        <td>Ending check</td>
+      </tr>
+      <tr>
+        <td>find</td>
+        <td><code>text.find("Python")</code></td>
+        <td>Position find karna</td>
+      </tr>
+      <tr>
+        <td>in</td>
+        <td><code>"Python" in text</code></td>
+        <td>Presence check</td>
+      </tr>
+    </table>
+
+    <div class="highlight">
+      <strong>Golden Rule:</strong>
+      String ko ek sequence samjho. Pehle indexing samjho → phir slicing →
+      phir methods → phir strings ko DevOps logs, files, commands aur configuration
+      ke saath practice karo.
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>🐍 Python Strings — DevOps Learning Notes</p>
+  <p>Learn → Practice → Automate → Build</p>
+</footer>
+
+</body>
+</html>
