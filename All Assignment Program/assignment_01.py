@@ -1,0 +1,16 @@
+name = input("Enter Your Name : ")
+age = int(input("Enter Your Age: "))
+operating_system = input("Enter Your Operating System: ")
+learn_goal = input("Enter Your Learning Goal: ")
+year_experienc = int(input("Enter Year of Experience: "))
+
+
+print("===============================")
+print(" USER INFORMATION ")
+print("===============================")
+print(f"Name             : {name}")
+print(f"Age              : {age}")
+print(f"Operating System : {operating_system}")
+print(f"Learning Goal    : {learn_goal}")
+print(f"Experience       : {year_experienc}")
+print("==============================")
