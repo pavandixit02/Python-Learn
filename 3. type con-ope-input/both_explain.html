@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Type Conversion & Operators - DevOps Notes</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#1f2937;line-height:1.7}
+header{background:linear-gradient(135deg,#111827,#2563eb);color:#fff;text-align:center;padding:48px 20px}
+header h1{margin:0 0 8px;font-size:2.3rem}.container{max-width:1100px;margin:30px auto;padding:0 18px}
+.card,.toc{background:#fff;border-radius:14px;padding:25px;margin-bottom:24px;box-shadow:0 5px 18px rgba(0,0,0,.07)}
+h2{color:#1e40af;border-left:5px solid #2563eb;padding-left:12px;margin-top:0}h3{color:#374151;margin-top:25px}
+.toc ul{columns:2}.toc a{color:#1d4ed8;text-decoration:none}
+pre{background:#111827;color:#e5e7eb;padding:18px;border-radius:10px;overflow-x:auto}
+code{background:#eef2ff;color:#3730a3;padding:2px 6px;border-radius:4px}pre code{background:transparent;color:inherit;padding:0}
+.highlight,.tip,.warning,.note{padding:14px 16px;border-radius:8px;margin:15px 0}
+.highlight{background:#eff6ff;border-left:4px solid #2563eb}.tip{background:#ecfdf5;border-left:4px solid #10b981}
+.warning{background:#fff7ed;border-left:4px solid #f97316}.note{background:#f5f3ff;border-left:4px solid #7c3aed}
+.output{background:#f3f4f6;border-left:4px solid #6b7280;padding:12px 15px;border-radius:6px;font-family:monospace;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;margin:15px 0}th,td{border:1px solid #dbe2ea;padding:11px;text-align:left;vertical-align:top}
+th{background:#dbeafe;color:#1e3a8a}footer{text-align:center;padding:30px;color:#6b7280}
+@media(max-width:700px){.toc ul{columns:1}header h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<header>
+<h1>🐍 Python Type Conversion & Operators</h1>
+<p>Beginner to DevOps Practical Notes</p>
+<p>Concept → Syntax → Example → Output → DevOps Use Case</p>
+</header>
+<div class="container">
+
+<div class="toc">
+<h2>📚 Topics Covered</h2>
+<ul>
+<li><a href="#conversion">1. Type Conversion</a></li>
+<li><a href="#int">2. int()</a></li>
+<li><a href="#float">3. float()</a></li>
+<li><a href="#str">4. str()</a></li>
+<li><a href="#bool">5. bool()</a></li>
+<li><a href="#operators">6. Operators Overview</a></li>
+<li><a href="#arithmetic">7. Arithmetic Operators</a></li>
+<li><a href="#comparison">8. Comparison Operators</a></li>
+<li><a href="#logical">9. Logical Operators</a></li>
+<li><a href="#assignment">10. Assignment Operators</a></li>
+<li><a href="#devops">11. DevOps Practical Example</a></li>
+<li><a href="#flow">12. Complete Data Flow</a></li>
+<li><a href="#practice">13. Practice Tasks</a></li>
+<li><a href="#interview">14. Interview Questions</a></li>
+</ul>
+</div>
+
+<section class="card" id="conversion">
+<h2>1. Type Conversion</h2>
+<p><strong>Type conversion</strong> ka matlab ek data type ki value ko doosre data type me convert karna hai.</p>
+<div class="highlight"><strong>Most important DevOps pattern:</strong><br><code>input() → string → conversion → number → comparison → True/False</code></div>
+<p>Python ka <code>input()</code> normally user input ko <code>str</code> ke form me return karta hai. Agar hume us value par mathematical operation ya numeric comparison karna hai, to usse <code>int()</code> ya <code>float()</code> me convert karna padta hai.</p>
+<table>
+<tr><th>Function</th><th>Conversion</th><th>Example</th><th>Typical Use</th></tr>
+<tr><td><code>int()</code></td><td>String/number → integer</td><td><code>int("25")</code></td><td>Age, count, port, CPU percentage</td></tr>
+<tr><td><code>float()</code></td><td>String/number → decimal</td><td><code>float("25.5")</code></td><td>Temperature, percentage, measurements</td></tr>
+<tr><td><code>str()</code></td><td>Value → string</td><td><code>str(25)</code></td><td>Messages, filenames, text output</td></tr>
+<tr><td><code>bool()</code></td><td>Value → Boolean</td><td><code>bool(1)</code></td><td>True/False logic</td></tr>
+</table>
+</section>
+
+<section class="card" id="int">
+<h2>2. int() — Convert to Integer</h2>
+<p><code>int()</code> ka use compatible value ko whole number/integer me convert karne ke liye hota hai.</p>
+<pre><code>age = input("Enter your age: ")
+age = int(age)
+print(age + 5)</code></pre>
+<p>Flow: <code>input()</code> value leta hai → value string hoti hai → <code>int()</code> integer banata hai → ab mathematical operation possible hai.</p>
+<h3>Shortcut</h3>
+<pre><code>age = int(input("Enter your age: "))
+print(age + 7)</code></pre>
+<div class="note"><strong>Important:</strong> <code>int("25")</code> valid hai, lekin <code>int("hello")</code> <code>ValueError</code> dega.</div>
+<h3>DevOps Example</h3>
+<pre><code>cpu_usage = int(input("Enter CPU Usage: "))
+
+if cpu_usage &gt; 90:
+    print("Critical CPU usage")</code></pre>
+</section>
+
+<section class="card" id="float">
+<h2>3. float() — Convert to Decimal</h2>
+<p><code>float()</code> kisi value ko decimal/floating-point number me convert karta hai.</p>
+<pre><code>temp = input("Enter your temperature: ")
+temp = float(temp)
+print(temp)</code></pre>
+<h3>Shortcut</h3>
+<pre><code>temp = float(input("Enter your temperature: "))
+print(temp)</code></pre>
+<h3>Example</h3>
+<pre><code>usage = float("75.5")
+print(usage)
+print(type(usage))</code></pre>
+<div class="output">75.5
+&lt;class 'float'&gt;</div>
+<div class="tip"><strong>Use:</strong> decimal values jaise temperature, percentage ya measurements ke liye.</div>
+</section>
+
+<section class="card" id="str">
+<h2>4. str() — Convert to String</h2>
+<p><code>str()</code> kisi value ko text/string me convert karta hai.</p>
+<pre><code>age1 = 25
+age1_text = str(age1)
+print(type(age1_text))</code></pre>
+<div class="output">&lt;class 'str'&gt;</div>
+<h3>Practical Example</h3>
+<pre><code>port = 8080
+print("Application port: " + str(port))</code></pre>
+<p>Modern Python me f-string aur cleaner hota hai:</p>
+<pre><code>port = 8080
+print(f"Application port: {port}")</code></pre>
+<div class="warning"><strong>Common mistake:</strong> <code>"Port: " + 8080</code> direct concatenate nahi kar sakte, kyunki types different hain.</div>
+</section>
+
+<section class="card" id="bool">
+<h2>5. bool() — Convert to Boolean</h2>
+<p><code>bool()</code> value ko <code>True</code> ya <code>False</code> me convert karta hai.</p>
+<pre><code>print(bool(1))
+print(bool(0))
+print(bool(""))
+print(bool("Hello"))</code></pre>
+<div class="output">True
+False
+False
+True</div>
+<table>
+<tr><th>Value</th><th>bool(value)</th></tr>
+<tr><td><code>1</code></td><td>True</td></tr>
+<tr><td><code>0</code></td><td>False</td></tr>
+<tr><td><code>"Hello"</code></td><td>True</td></tr>
+<tr><td><code>""</code></td><td>False</td></tr>
+</table>
+</section>
+
+<section class="card" id="operators">
+<h2>6. Operators — Overview</h2>
+<p>Operators special symbols/keywords hain jo values par operations perform karte hain.</p>
+<table>
+<tr><th>Category</th><th>Operators</th><th>Purpose</th></tr>
+<tr><td>Arithmetic</td><td><code>+ - * / % // **</code></td><td>Mathematical calculations</td></tr>
+<tr><td>Comparison</td><td><code>== != &gt; &lt; &gt;= &lt;=</code></td><td>Values compare karna</td></tr>
+<tr><td>Logical</td><td><code>and or not</code></td><td>Conditions combine/reverse karna</td></tr>
+<tr><td>Assignment</td><td><code>= += -= *= /= %= **= //=</code></td><td>Variables assign/update karna</td></tr>
+</table>
+</section>
+
+<section class="card" id="arithmetic">
+<h2>7. Arithmetic Operators</h2>
+<p>Arithmetic operators numerical calculations ke liye use hote hain.</p>
+<table>
+<tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+<tr><td>+</td><td>Addition</td><td><code>5 + 2</code></td><td>7</td></tr>
+<tr><td>-</td><td>Subtraction</td><td><code>5 - 2</code></td><td>3</td></tr>
+<tr><td>*</td><td>Multiplication</td><td><code>5 * 2</code></td><td>10</td></tr>
+<tr><td>/</td><td>Division</td><td><code>5 / 2</code></td><td>2.5</td></tr>
+<tr><td>%</td><td>Remainder</td><td><code>5 % 2</code></td><td>1</td></tr>
+<tr><td>//</td><td>Floor Division</td><td><code>5 // 2</code></td><td>2</td></tr>
+<tr><td>**</td><td>Power</td><td><code>2 ** 3</code></td><td>8</td></tr>
+</table>
+<h3>Floor Division</h3>
+<pre><code>print(5 // 2)</code></pre><div class="output">2</div>
+<p><code>/</code> normal division hai; <code>//</code> floor division hai.</p>
+<h3>Power</h3>
+<pre><code>print(2 ** 3)</code></pre><div class="output">8</div>
+<p>Meaning: <code>2 × 2 × 2 = 8</code>.</p>
+</section>
+
+<section class="card" id="comparison">
+<h2>8. Comparison Operators</h2>
+<p>Comparison operators do values ko compare karte hain aur result <code>True</code> ya <code>False</code> hota hai.</p>
+<table>
+<tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><code>==</code></td><td>Equal</td><td><code>10 == 10 → True</code></td></tr>
+<tr><td><code>!=</code></td><td>Not Equal</td><td><code>10 != 5 → True</code></td></tr>
+<tr><td><code>&gt;</code></td><td>Greater Than</td><td><code>10 &gt; 5 → True</code></td></tr>
+<tr><td><code>&lt;</code></td><td>Less Than</td><td><code>10 &lt; 5 → False</code></td></tr>
+<tr><td><code>&gt;=</code></td><td>Greater or Equal</td><td><code>10 &gt;= 10 → True</code></td></tr>
+<tr><td><code>&lt;=</code></td><td>Less or Equal</td><td><code>10 &lt;= 5 → False</code></td></tr>
+</table>
+<h3>DevOps Example</h3>
+<pre><code>cpu_usage = 95
+print(cpu_usage &gt; 90)</code></pre>
+<div class="output">True</div>
+<div class="warning"><strong>Common mistake:</strong> <code>=</code> assignment ke liye aur <code>==</code> comparison ke liye hota hai.</div>
+</section>
+
+<section class="card" id="logical">
+<h2>9. Logical Operators</h2>
+<h3>and</h3>
+<p><code>and</code> tab True deta hai jab dono conditions True hon.</p>
+<pre><code>cpu = 70
+memory = 60
+print(cpu &lt; 80 and memory &lt; 80)</code></pre>
+<div class="output">True</div>
+<h3>or</h3>
+<p><code>or</code> tab True deta hai jab kam se kam ek condition True ho.</p>
+<pre><code>cpu = 95
+memory = 50
+print(cpu &gt; 90 or memory &gt; 90)</code></pre>
+<div class="output">True</div>
+<h3>not</h3>
+<p><code>not</code> Boolean result ko reverse karta hai.</p>
+<pre><code>status = True
+print(not status)</code></pre>
+<div class="output">False</div>
+<div class="tip"><strong>DevOps:</strong> <code>and</code> multiple health conditions, <code>or</code> alert conditions aur <code>not</code> opposite status check ke liye useful hai.</div>
+</section>
+
+<section class="card" id="assignment">
+<h2>10. Assignment Operators</h2>
+<p>Assignment operators variable ko assign aur update karne ke liye use hote hain.</p>
+<h3>Normal Use</h3>
+<pre><code>count = 10
+count = count + 1
+print(count)</code></pre>
+<div class="output">11</div>
+<h3>Shortcut Use</h3>
+<pre><code>count = 10
+count += 1
+print(count)</code></pre>
+<div class="output">11</div>
+<table>
+<tr><th>Operator</th><th>Equivalent</th><th>Meaning</th></tr>
+<tr><td><code>+=</code></td><td><code>x = x + y</code></td><td>Add and assign</td></tr>
+<tr><td><code>-=</code></td><td><code>x = x - y</code></td><td>Subtract and assign</td></tr>
+<tr><td><code>*=</code></td><td><code>x = x * y</code></td><td>Multiply and assign</td></tr>
+<tr><td><code>/=</code></td><td><code>x = x / y</code></td><td>Divide and assign</td></tr>
+<tr><td><code>%=</code></td><td><code>x = x % y</code></td><td>Remainder and assign</td></tr>
+<tr><td><code>**=</code></td><td><code>x = x ** y</code></td><td>Power and assign</td></tr>
+<tr><td><code>//=</code></td><td><code>x = x // y</code></td><td>Floor divide and assign</td></tr>
+</table>
+<p>Shortcut ka benefit: code concise aur readable hota hai.</p>
+</section>
+
+<section class="card" id="devops">
+<h2>11. DevOps Practical Example</h2>
+<p>Tumhari practical file me server name, CPU usage aur memory usage li jaati hai. CPU aur memory ko <code>int()</code> se number me convert karke <code>&gt; 90</code> threshold se compare kiya jata hai.</p>
+<pre><code>server_name = input("Enter Server Name : ")
+cpu_usage = int(input("Enter CPU Usage : "))
+memory_usage = int(input("Enter Memory Usage : "))
+
+print("=======SERVER MATRICS=======")
+print(f"Server Name     : {server_name}")
+print(f"CPU Usage       : {cpu_usage}%")
+print(f"Memory Usage    : {memory_usage}%")
+
+print(f"CPU Critical    : {cpu_usage &gt; 90}")
+print(f"Memory Critical : {memory_usage &gt; 90}")
+print("============================")</code></pre>
+
+<h3>Step-by-Step</h3>
+<table>
+<tr><th>Step</th><th>Concept</th><th>Explanation</th></tr>
+<tr><td>1</td><td><code>input()</code></td><td>User data leta hai; input string hota hai.</td></tr>
+<tr><td>2</td><td><code>int()</code></td><td>CPU/memory text ko integer banata hai.</td></tr>
+<tr><td>3</td><td>Variables</td><td>Values ko store karta hai.</td></tr>
+<tr><td>4</td><td>Comparison</td><td><code>&gt; 90</code> threshold check karta hai.</td></tr>
+<tr><td>5</td><td>Boolean</td><td>True/False result deta hai.</td></tr>
+<tr><td>6</td><td>f-string</td><td>Readable status report banata hai.</td></tr>
+</table>
+
+<h3>Example Run</h3>
+<pre><code>Enter Server Name : web-server-01
+Enter CPU Usage : 95
+Enter Memory Usage : 70</code></pre>
+<div class="output">=======SERVER MATRICS=======
+Server Name     : web-server-01
+CPU Usage       : 95%
+Memory Usage    : 70%
+CPU Critical    : True
+Memory Critical : False
+============================</div>
+
+<div class="highlight"><strong>Foundation of DevOps Automation:</strong><br><code>input() → string → int() → number → compare → TRUE/FALSE</code></div>
+</section>
+
+<section class="card" id="flow">
+<h2>12. Complete Data Flow</h2>
+<pre><code>User Input
+    ↓
+input()
+    ↓
+String
+    ↓
+int() / float()
+    ↓
+Number
+    ↓
+Arithmetic / Comparison
+    ↓
+True / False
+    ↓
+Condition / Decision
+    ↓
+DevOps Action</code></pre>
+<p>Isi basic pattern ko aage server health checks, monitoring, alerting, log processing aur automation scripts me expand kiya ja sakta hai.</p>
+</section>
+
+<section class="card" id="practice">
+<h2>13. Practice Tasks</h2>
+<ol>
+<li>User se age lo, <code>int()</code> se convert karo aur 5 years baad ki age print karo.</li>
+<li>Temperature ko <code>float()</code> me convert karo.</li>
+<li>Integer ko <code>str()</code> me convert karke type check karo.</li>
+<li><code>0</code>, <code>1</code>, <code>""</code> aur <code>"Hello"</code> ke <code>bool()</code> results check karo.</li>
+<li>Do numbers lekar arithmetic operators practice karo.</li>
+<li>CPU aur memory input lekar <code>and</code> se check karo ki dono 80 se kam hain.</li>
+<li><code>or</code> se check karo ki CPU ya memory me se koi 90 se greater hai.</li>
+<li><code>count = 10</code> ke saath all assignment shortcuts practice karo.</li>
+</ol>
+
+<h3>🔥 Mini Project — Server Health Checker</h3>
+<pre><code>server_name = input("Enter Server Name: ")
+cpu_usage = int(input("Enter CPU Usage: "))
+memory_usage = int(input("Enter Memory Usage: "))
+
+cpu_critical = cpu_usage &gt; 90
+memory_critical = memory_usage &gt; 90
+
+print("\n======= SERVER HEALTH =======")
+print(f"Server Name     : {server_name}")
+print(f"CPU Usage       : {cpu_usage}%")
+print(f"Memory Usage    : {memory_usage}%")
+print(f"CPU Critical    : {cpu_critical}")
+print(f"Memory Critical : {memory_critical}")
+
+if cpu_critical or memory_critical:
+    print("Status          : ALERT")
+else:
+    print("Status          : NORMAL")
+
+print("=============================")</code></pre>
+</section>
+
+<section class="card" id="interview">
+<h2>14. Interview Questions</h2>
+<ol>
+<li>What is type conversion in Python?</li>
+<li>What does <code>input()</code> return by default?</li>
+<li>Why do we use <code>int(input())</code>?</li>
+<li>Difference between <code>int()</code> and <code>float()</code>?</li>
+<li>What does <code>str()</code> do?</li>
+<li>What does <code>bool(0)</code> return?</li>
+<li>Difference between <code>/</code> and <code>//</code>?</li>
+<li>What does <code>%</code> do?</li>
+<li>What does <code>**</code> do?</li>
+<li>Difference between <code>=</code> and <code>==</code>?</li>
+<li>How does <code>and</code> work?</li>
+<li>How does <code>or</code> work?</li>
+<li>What does <code>not</code> do?</li>
+<li>What does <code>count += 1</code> mean?</li>
+<li>How are these concepts useful in DevOps automation?</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>🎯 Quick Revision</h2>
+<table>
+<tr><th>Concept</th><th>Remember</th></tr>
+<tr><td><code>int()</code></td><td>Integer conversion</td></tr>
+<tr><td><code>float()</code></td><td>Decimal conversion</td></tr>
+<tr><td><code>str()</code></td><td>String conversion</td></tr>
+<tr><td><code>bool()</code></td><td>True/False conversion</td></tr>
+<tr><td><code>//</code></td><td>Floor division</td></tr>
+<tr><td><code>%</code></td><td>Remainder</td></tr>
+<tr><td><code>**</code></td><td>Power</td></tr>
+<tr><td><code>==</code></td><td>Equal comparison</td></tr>
+<tr><td><code>and</code></td><td>Both conditions True</td></tr>
+<tr><td><code>or</code></td><td>At least one condition True</td></tr>
+<tr><td><code>not</code></td><td>Reverse Boolean result</td></tr>
+<tr><td><code>+=</code></td><td>Add and assign</td></tr>
+<tr><td><code>-=</code></td><td>Subtract and assign</td></tr>
+</table>
+<div class="highlight"><strong>Final Formula:</strong> Input → Convert → Calculate/Compare → Boolean Result → Decision → Automation</div>
+</section>
+
+</div>
+<footer>
+<p>🐍 Python for DevOps — Type Conversion & Operators</p>
+<p>Learn → Practice → Automate → Build</p>
+</footer>
+</body>
+</html>
