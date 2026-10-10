@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python String Methods Practical for DevOps</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#202938;font:16px/1.7 Arial,sans-serif}header{background:linear-gradient(135deg,#111827,#2563eb);color:white;text-align:center;padding:42px 18px}header h1{margin:0;font-size:2.2rem}.wrap{max-width:1050px;margin:25px auto;padding:0 16px}.card{background:#fff;padding:23px;margin:0 0 22px;border-radius:13px;box-shadow:0 4px 15px #0000000c}h2{color:#1e40af;border-left:5px solid #2563eb;padding-left:12px;margin-top:0}h3{margin-top:24px;color:#374151}pre{background:#111827;color:#f3f4f6;padding:16px;border-radius:9px;overflow:auto}code{background:#eef2ff;color:#3730a3;padding:2px 5px;border-radius:4px}pre code{background:none;color:inherit;padding:0}.info,.tip,.warn{padding:13px 15px;border-radius:7px;margin:14px 0}.info{background:#eff6ff;border-left:4px solid #2563eb}.tip{background:#ecfdf5;border-left:4px solid #10b981}.warn{background:#fff7ed;border-left:4px solid #f97316}.out{white-space:pre-wrap;font-family:monospace;background:#f3f4f6;padding:12px;border-left:4px solid #9ca3af}table{width:100%;border-collapse:collapse;margin:15px 0}td,th{border:1px solid #dbe2ea;padding:9px;text-align:left}th{background:#dbeafe}.toc ul{columns:2}a{color:#1d4ed8;text-decoration:none}footer{text-align:center;color:#6b7280;padding:25px}@media(max-width:650px){.toc ul{columns:1}header h1{font-size:1.7rem}}
+</style></head>
+<body>
+<header><h1>🐍 Python String Methods — Practical</h1><p>Based on your <b>devops-string.py</b> practice file</p><p>Hinglish notes • Code • Output • DevOps examples</p></header>
+<main class="wrap">
+<section class="card toc"><h2>Topics covered</h2><ul>
+<li><a href="#strip">strip()</a></li><li><a href="#case">lower() and upper()</a></li><li><a href="#replace">replace()</a></li><li><a href="#split">split() with separators</a></li><li><a href="#in">in operator</a></li><li><a href="#starts">startswith() and endswith()</a></li><li><a href="#chain">Method chaining</a></li><li><a href="#project">Combined DevOps practical</a></li><li><a href="#mistakes">Common mistakes</a></li><li><a href="#tasks">Practice tasks</a></li><li><a href="#interview">Interview questions</a></li>
+</ul></section>
+
+<section class="card"><h2>1. What are these practicals about?</h2>
+<p>Your file practices how to clean and standardize text, replace part of a hostname, split server inventories, search logs for keywords, check log prefixes/suffixes, and chain methods together.</p>
+<div class="info"><b>String-processing workflow:</b><br>Raw text → clean → standardize case → split/search/check → use result.</div>
+<p>DevOps scripts frequently process server names, status values, filenames, command output, and log messages. These examples are a foundation for that work.</p></section>
+
+<section class="card" id="strip"><h2>2. Clean String with strip()</h2>
+<p><code>strip()</code> removes whitespace from the beginning and end of a string. It does not remove spaces in the middle.</p>
+<pre><code>server = "   devops-server   "
+print(server)
+print(server.strip())</code></pre>
+<div class="out">   devops-server   
+devops-server</div>
+<p>The first print shows the original spaces. The second prints a cleaned result.</p>
+<h3>Practical use: clean user input</h3>
+<pre><code>server = input("Enter server name: ").strip()
+print(f"Selected server: {server}")</code></pre>
+<div class="tip"><b>Important:</b> Strings are immutable. <code>strip()</code> returns a new string; save it with <code>server = server.strip()</code> if you need the cleaned value later.</div></section>
+
+<section class="card" id="case"><h2>3. lower() and upper()</h2>
+<p><code>lower()</code> converts letters to lowercase; <code>upper()</code> converts letters to uppercase.</p>
+<h3>lower()</h3><pre><code>status = input("Enter the status: ").strip().lower()
+print(status)</code></pre><p>If input is <code> Active </code>, output is:</p><div class="out">active</div>
+<h3>upper()</h3><pre><code>status = input("Enter the status: ").strip().upper()
+print(status)</code></pre><p>If input is <code> active </code>, output is:</p><div class="out">ACTIVE</div>
+<h3>Why useful?</h3><p>A user may type <code>ACTIVE</code>, <code>active</code>, or <code> Active </code>. Normalizing the case makes comparisons consistent.</p>
+<pre><code>status = input("Service status: ").strip().lower()
+if status == "active":
+    print("Service is active")
+else:
+    print("Service is not active")</code></pre>
+<div class="warn"><b>Case-sensitive comparison:</b> <code>"ERROR" == "error"</code> is False. Convert both values to the same case before comparing.</div></section>
+
+<section class="card" id="replace"><h2>4. replace()</h2>
+<p><code>replace(old, new)</code> returns a new string where matching occurrences of <code>old</code> are replaced by <code>new</code>.</p>
+<pre><code>hostname = "devops-server"
+new_hostname = hostname.replace("devops", "prod")
+print(new_hostname)</code></pre><div class="out">prod-server</div>
+<h3>Replace all matching occurrences</h3><pre><code>text = "devops-devops-server"
+print(text.replace("devops", "prod"))</code></pre><div class="out">prod-prod-server</div>
+<h3>Limit replacements</h3><pre><code>print(text.replace("devops", "prod", 1))</code></pre><div class="out">prod-devops-server</div>
+<div class="warn"><b>Safety note:</b> This only changes text in Python. It does not rename a real production host or change infrastructure.</div></section>
+
+<section class="card" id="split"><h2>5. split() with different separators</h2>
+<p><code>split()</code> divides a string into pieces and returns a list. The separator must match the delimiter in the input.</p>
+<h3>Comma</h3><pre><code>server_data = "web01,web02,web03,db01,db02"
+print(server_data.split(","))</code></pre><div class="out">['web01', 'web02', 'web03', 'db01', 'db02']</div>
+<h3>Semicolon</h3><pre><code>"web01;web02;db01".split(";")</code></pre><div class="out">['web01', 'web02', 'db01']</div>
+<h3>Pipe</h3><pre><code>"web01|web02|db01".split("|")</code></pre><div class="out">['web01', 'web02', 'db01']</div>
+<h3>Whitespace</h3><pre><code>server_data = "web01 web02 web03 db01 db02"
+print(server_data.split())</code></pre><div class="out">['web01', 'web02', 'web03', 'db01', 'db02']</div>
+<p>Without an argument, <code>split()</code> separates on whitespace and handles repeated spaces.</p>
+<h3>Colon</h3><pre><code>"web01:web02:db01".split(":")</code></pre><div class="out">['web01', 'web02', 'db01']</div>
+<h3>Use the returned list</h3><pre><code>servers = "web01,web02,db01".split(",")
+print(servers[0])
+print(servers[2])
+print(len(servers))</code></pre><div class="out">web01
+db01
+3</div>
+<div class="tip"><b>DevOps use:</b> Parse simple server inventories or delimiter-separated text into a list. For complex CSV files, use Python's <code>csv</code> module instead.</div></section>
+
+<section class="card" id="in"><h2>6. in operator</h2>
+<p><code>in</code> checks whether a substring exists in a string. The result is <code>True</code> or <code>False</code>.</p>
+<pre><code>log = "ERROR nginx service failed"
+print("ERROR" in log)
+print("WARNING" in log)</code></pre><div class="out">True
+False</div>
+<h3>Log detection</h3><pre><code>log = "ERROR nginx service failed"
+if "ERROR" in log:
+    print("Alert: error found in log")</code></pre><div class="out">Alert: error found in log</div>
+<p>To make the keyword check case-insensitive, normalize the log:</p><pre><code>if "error" in log.lower():
+    print("Error keyword found")</code></pre></section>
+
+<section class="card" id="starts"><h2>7. startswith() and endswith()</h2>
+<p><code>startswith()</code> checks the beginning of a string. <code>endswith()</code> checks the ending. Both return Boolean values.</p>
+<pre><code>log = "ERROR nginx service failed"
+print(log.startswith("ERROR"))
+print(log.endswith("failed"))</code></pre><div class="out">True
+True</div>
+<h3>Classify a log</h3><pre><code>if log.startswith("ERROR"):
+    print("This is an error log")
+if log.endswith("failed"):
+    print("Message ends with failure")</code></pre><div class="out">This is an error log
+Message ends with failure</div>
+<h3>Filename check</h3><pre><code>filename = "backup.log"
+print(filename.endswith(".log"))
+print(filename.startswith("backup"))</code></pre><div class="out">True
+True</div>
+<div class="tip"><b>DevOps use:</b> Check log prefixes, file extensions, and naming conventions.</div></section>
+
+<section class="card" id="chain"><h2>8. Chaining string methods</h2>
+<p>Method chaining means calling another method on the value returned by the previous method.</p>
+<pre><code>status1 = "   RUNNING   "
+status1 = status1.strip().lower()
+print(status1)</code></pre><div class="out">running</div>
+<p>Step-by-step:</p><ol><li><code>strip()</code> returns <code>"RUNNING"</code>.</li><li><code>lower()</code> runs on that result and returns <code>"running"</code>.</li><li>The final value is assigned back to <code>status1</code>.</li></ol>
+<h3>Direct chaining with input</h3><pre><code>status2 = input("Enter the status: ").strip().upper()
+print(status2)</code></pre><p>Input <code> active </code> produces:</p><div class="out">ACTIVE</div>
+<h3>Another example</h3><pre><code>server = "   WEB01   "
+server = server.strip().lower()
+print(server.startswith("web"))</code></pre><div class="out">True</div></section>
+
+<section class="card" id="project"><h2>9. Combined DevOps practical: text analyzer</h2>
+<p>This practice combines the same methods from your file. It cleans a status, splits a server list, checks a log, and demonstrates a hostname text replacement.</p>
+<pre><code>status = input("Enter service status: ").strip().lower()
+print(f"Normalized status: {status}")
+
+server_data = input("Enter servers separated by commas: ").strip()
+servers = server_data.split(",")
+print(f"Server list: {servers}")
+print(f"Number of servers: {len(servers)}")
+
+log = input("Enter a log message: ").strip()
+if "error" in log.lower():
+    print("Alert: error keyword found")
+if log.upper().startswith("ERROR"):
+    print("Log starts with ERROR")
+if log.lower().endswith("failed"):
+    print("Log ends with failed")
+
+hostname = input("Enter hostname: ").strip()
+print("Updated text preview:", hostname.replace("devops", "prod"))</code></pre>
+<div class="note">The hostname replacement is only a text preview. It does not change the actual host configuration.</div></section>
+
+<section class="card" id="mistakes"><h2>10. Common mistakes</h2>
+<table><tr><th>Mistake</th><th>Correction / explanation</th></tr>
+<tr><td>Calling <code>status.strip()</code> without saving it</td><td>Use <code>status = status.strip()</code> if you need the cleaned result.</td></tr>
+<tr><td>Searching lowercase text in uppercase logs</td><td>Use <code>"error" in log.lower()</code>.</td></tr>
+<tr><td>Using the wrong separator for <code>split()</code></td><td>The delimiter must match the data.</td></tr>
+<tr><td>Assuming <code>replace()</code> changes the original variable</td><td>Save or print the returned string.</td></tr>
+<tr><td>Using <code>startswith()</code> to search anywhere</td><td>Use <code>in</code> for presence anywhere.</td></tr>
+<tr><td>Using <code>endswith()</code> to check the prefix</td><td>Use <code>startswith()</code> for the beginning.</td></tr></table></section>
+
+<section class="card" id="tasks"><h2>11. Practice tasks</h2>
+<ol>
+<li>Clean <code>"   prod-server   "</code> using <code>strip()</code>.</li>
+<li>Take a status input and standardize it to lowercase.</li>
+<li>Replace <code>devops</code> with <code>prod</code> in <code>devops-web01</code>.</li>
+<li>Split <code>web01,web02,db01,cache01</code> using commas.</li>
+<li>Repeat splitting with semicolon, pipe, whitespace, and colon.</li>
+<li>Check whether a log contains <code>ERROR</code>.</li>
+<li>Check whether a log starts with <code>WARNING</code>.</li>
+<li>Check whether a filename ends with <code>.log</code>.</li>
+<li>Turn <code>"   FAILED   "</code> into <code>"failed"</code> using method chaining.</li>
+<li>Build a mini script that parses a server list and detects error messages.</li>
+</ol></section>
+
+<section class="card" id="interview"><h2>12. Interview questions</h2>
+<ol>
+<li>What does <code>strip()</code> do?</li><li>Difference between <code>strip()</code>, <code>lstrip()</code>, and <code>rstrip()</code>?</li>
+<li>Difference between <code>lower()</code> and <code>upper()</code>?</li><li>Does <code>replace()</code> modify the original string?</li>
+<li>What does <code>split()</code> return?</li><li>What happens when <code>split()</code> is called without a separator?</li>
+<li>How do you split a string using a pipe?</li><li>What does <code>in</code> return?</li>
+<li>Difference between <code>in</code> and <code>startswith()</code>?</li><li>What does <code>endswith()</code> check?</li>
+<li>What is method chaining?</li><li>How can string methods help with DevOps log analysis?</li>
+</ol></section>
+
+<section class="card"><h2>⚡ Quick revision</h2>
+<table><tr><th>Method/operator</th><th>Purpose</th></tr>
+<tr><td><code>strip()</code></td><td>Remove outer whitespace</td></tr><tr><td><code>lower()</code></td><td>Convert letters to lowercase</td></tr>
+<tr><td><code>upper()</code></td><td>Convert letters to uppercase</td></tr><tr><td><code>replace(old,new)</code></td><td>Return text with replacement</td></tr>
+<tr><td><code>split(separator)</code></td><td>String to list</td></tr><tr><td><code>substring in text</code></td><td>Presence check</td></tr>
+<tr><td><code>startswith(prefix)</code></td><td>Beginning check</td></tr><tr><td><code>endswith(suffix)</code></td><td>Ending check</td></tr>
+<tr><td><code>strip().lower()</code></td><td>Clean and lowercase</td></tr></table>
+<div class="info"><b>Study tip:</b> Run each example in your terminal, change the input, predict the output, then verify it. This turns string methods into practical DevOps scripting skills.</div></section>
+</main>
+<footer>Python for DevOps • String Methods Practical Notes</footer>
+</body></html>
