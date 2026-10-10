@@ -1,0 +1,13 @@
+log_message = input("Enter Log Message: ")
+
+print("==============================")
+print("        LOG ANALYZER          ")
+print("==============================")
+print(f"Log Message       : {log_message.lower()}\n")
+print(f"Contains ERROR    : {'ERROR' in log_message}")
+print(f"Contains WARNING  : {'WARNING' in log_message}")
+print(f"Contains CRITICAL : {'CRITICAL' in log_message}")
+print(f"Contains NGINX    : {'NGINX' in log_message}")
+print(f"Contains DOCKER   : {'DOCKER' in log_message}")
+print(f"Log Length        : {len(log_message)}")
+print("\n==============================")
