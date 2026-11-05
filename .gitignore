@@ -1,0 +1,2 @@
+# Ignore all HTML files in the git repository -!
+*.html
