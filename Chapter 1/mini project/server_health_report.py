@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-# Phase 1 Final Mini Project
-# Ab ek project banayenge jo tumhare ab tak ke Python fundamentals ko combine karega.
-
-
-# Project: Server Information & Health Report
-# Beginner level
-# Python se server ki information aur manually entered metrics ka formatted report generate karna.
-
-
-=======
->>>>>>> d0121de (Complete Mini Project)
 ## Project requirements
 # File ka naam rakho:
 # server_health_report.py
